@@ -2,9 +2,11 @@ package com.example.tddmenuversion.service;
 
 import com.example.tddmenuversion.model.Menu;
 import com.example.tddmenuversion.repository.MenuRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class MenuService {
 
     private MenuRepository menuRepository;
@@ -14,6 +16,8 @@ public class MenuService {
     }
 
     public Menu getMenu(Long id){
-        return menuRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        var menu = menuRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        log.info("Get Menu {}", menu);
+        return menu;
     }
 }
