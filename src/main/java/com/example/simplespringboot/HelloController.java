@@ -16,7 +16,7 @@ public class HelloController {
 
     @GetMapping("/hello/{name}")
     public String helloParameterize(@PathVariable("name") String name){
-        System.out.println("Test system out");
+        log.info("Changing");
         log.info("Say hello to {}", name);
         return "Hello " + name + " how are you";
     }
