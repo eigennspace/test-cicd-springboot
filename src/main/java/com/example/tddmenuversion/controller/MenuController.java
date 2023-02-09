@@ -6,6 +6,8 @@ import com.example.tddmenuversion.model.Menu;
 import com.example.tddmenuversion.service.MenuService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/menu")
 public class MenuController {
@@ -22,7 +24,12 @@ public class MenuController {
     }
 
     @PostMapping("/createNewMenu")
-    public MenuDto createMenu(@RequestBody CreateNewMenuRequest createNewMenuRequest){
+    public MenuDto createMenu(CreateNewMenuRequest createNewMenuRequest){
         return menuService.createNewMenu(createNewMenuRequest);
+    }
+
+    @GetMapping("/getAll")
+    public List<Menu> getAllMenu(){
+        return menuService.getAllMenu();
     }
 }

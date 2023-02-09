@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class MenuService {
@@ -46,5 +48,12 @@ public class MenuService {
         BeanUtils.copyProperties(menu, menuDto);
 
         return menuDto;
+    }
+
+    public List<Menu> getAllMenu() {
+
+        var menus = menuRepository.findAll();
+        log.info("List menu {}", menus);
+        return menus;
     }
 }

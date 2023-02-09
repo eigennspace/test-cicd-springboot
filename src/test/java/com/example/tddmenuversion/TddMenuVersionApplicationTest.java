@@ -1,6 +1,7 @@
 package com.example.tddmenuversion;
 
 import com.example.tddmenuversion.dto.CreateNewMenuRequest;
+import com.example.tddmenuversion.model.Menu;
 import com.example.tddmenuversion.repository.MenuRepository;
 import com.example.tddmenuversion.service.MenuService;
 import org.junit.jupiter.api.AfterEach;
@@ -10,6 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,18 +58,26 @@ public class TddMenuVersionApplicationTest {
 
     }
 
-//    @Test
-//    void createNewMenu(){
-//        CreateNewMenuRequest createNewMenuRequest = new CreateNewMenuRequest();
-//        createNewMenuRequest.setLabelMenu("Test New Menu");
-//        createNewMenuRequest.setVersion("1.1.1");
-//        createNewMenuRequest.setActive(Boolean.TRUE);
-//
-//        var menu = menuService.createNewMenu(createNewMenuRequest);
-//        assertNotNull(menu);
-//
-//        System.out.println(menu);
-//    }
+    @Test
+    void getAllMenu(){
+        Menu menu = new Menu(99L, "Purchase Gopay", "1.0.1", true, false);
+
+        List<Menu> menus = new ArrayList<>(List.of(menu));
+        assertIterableEquals(menus,menuService.getAllMenu());
+    }
+
+    @Test
+    void createNewMenu(){
+        CreateNewMenuRequest createNewMenuRequest = new CreateNewMenuRequest();
+        createNewMenuRequest.setLabelMenu("Test New Menu");
+        createNewMenuRequest.setVersion("1.1.1");
+        createNewMenuRequest.setActive(Boolean.TRUE);
+
+        var menu = menuService.createNewMenu(createNewMenuRequest);
+        assertNotNull(menu);
+
+        System.out.println(menu);
+    }
 
     @AfterEach
     void deleteMenu(){
