@@ -1,4 +1,4 @@
-package com.example.simplespringboot;
+package com.example.simplespringboot.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
