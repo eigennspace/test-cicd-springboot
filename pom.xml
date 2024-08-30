@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>simple-spring-boot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>simple-spring-boot</name>
     <description>simple-spring-boot</description>
     <properties>
